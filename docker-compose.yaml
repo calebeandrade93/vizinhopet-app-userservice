@@ -1,0 +1,16 @@
+services:
+  userservice:
+    build: .
+    container_name: userservice
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: ${DBCORE_URL}
+      SPRING_DATASOURCE_USERNAME: ${DBCORE_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${DBCORE_PASSWORD}
+    networks:
+      - vizinhopet-net
+
+networks:
+  vizinhopet-net:
+    external: true
