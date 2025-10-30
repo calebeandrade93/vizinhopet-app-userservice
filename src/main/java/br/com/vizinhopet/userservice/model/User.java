@@ -1,10 +1,8 @@
 package br.com.vizinhopet.userservice.model;
 
+import jakarta.annotation.Generated;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
 
@@ -13,10 +11,11 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "user_id", columnDefinition = "CHAR(36)")
     private String userId;
 
@@ -30,7 +29,7 @@ public class User {
     @Column(name = "phone_number", length = 15, nullable = false)
     private String phoneNumber;
 
-    @Column(name = "wtsapp_number", length = 15)
+    @Column(name = "wtsapp_number", length = 15, nullable = false)
     private String wtsappNumber;
 
     @Column(name = "email", length = 100, nullable = false, unique = true)
